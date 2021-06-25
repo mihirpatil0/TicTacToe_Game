@@ -1,5 +1,7 @@
 package com.bridgelab.tictactoe;
 
+import java.util.Scanner;
+
 /**********************************************
  * @author mihir
  * 
@@ -29,8 +31,44 @@ public class TicTacToe
 		}
 	}
 	
+	/**
+	 * Name : playerChoiceOfLetter.
+	 * 
+	 * Description : player can choose which letter he/she want.
+	 * 
+	 * Algorithm : In this function player has a given preference to choose the letter first. he can either choose x or o letter. 
+	 * if player chooses x then o letter will be assign to computer or vice versa.
+	 * 
+	 * Modified : First commit 25-June-2021
+	 */
+	public static void playerChoiceOfLetter()
+	{
+		Scanner scannerObject = new Scanner(System.in);
+		System.out.print("Enter your choice to select the character x or o : ");
+		char userInput = scannerObject.next().charAt(0);
+		scannerObject.close();
+		
+		if( userInput == 'x' || userInput == 'o' )
+		{
+			if(userInput == 'x')
+			{
+				System.out.println("Player chooses x & o is for computer.");
+			}
+			else
+			{
+				System.out.println("Player chooses o & x is for computer.");
+			}
+		}
+		else
+		{
+			System.out.println("Invalid Input ! Try again.");
+			playerChoiceOfLetter();
+		}
+	}
+	
 	public static void main(String[] args)
 	{
 		createTicTacToeBoard();
+		playerChoiceOfLetter();
 	}
 }
