@@ -43,6 +43,7 @@ public class TicTacToe
 	 */
 	public static void playerChoiceOfLetter()
 	{
+		char computerInput;
 		Scanner scannerObject = new Scanner(System.in);
 		System.out.print("Enter your choice to select the character x or o : ");
 		char userInput = scannerObject.next().charAt(0);
@@ -53,10 +54,12 @@ public class TicTacToe
 			if(userInput == 'x')
 			{
 				System.out.println("Player chooses x & o is for computer.");
+				computerInput = 'o';
 			}
 			else
 			{
 				System.out.println("Player chooses o & x is for computer.");
+				computerInput = 'x';
 			}
 		}
 		else
