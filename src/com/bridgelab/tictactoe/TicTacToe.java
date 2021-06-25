@@ -23,7 +23,7 @@ public class TicTacToe
 	 */
 	public static void createTicTacToeBoard()
 	{
-		for(int i = 1; i <= tictactoeArray.length; i++)
+		for(int i = 1; i < tictactoeArray.length; i++)
 		{
 			tictactoeArray[i] = '-';
 		}
