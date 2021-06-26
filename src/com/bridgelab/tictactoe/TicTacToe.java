@@ -11,27 +11,29 @@ import java.util.Scanner;
  **********************************************/
 public class TicTacToe
 {
-	public static char[] tictactoeArray = new char[10];
+	public static char[] tictactoeBoard = new char[10];
 	
 	/**
+	 * UC-1
 	 * Name : createTicTacToeBoard.
 	 * 
 	 * Description : Creating Tic-Tac-Toe Board.
 	 * 
-	 * Algorithm : In this function we are taking an char[] tictactoeArray array and starting from the 1st index 
+	 * Algorithm : In this function we are taking an char[] tictactoeBoard array and starting from the 1st index 
 	 * Assigning '-' till the last index number.
 	 * 
 	 * Modified : First commit 25-June-2021
 	 */
 	public static void createTicTacToeBoard()
 	{
-		for(int i = 1; i < tictactoeArray.length; i++)
+		for(int i = 1; i < tictactoeBoard.length; i++)
 		{
-			tictactoeArray[i] = '-';
+			tictactoeBoard[i] = '-';
 		}
 	}
 	
 	/**
+	 * UC-2
 	 * Name : playerChoiceOfLetter.
 	 * 
 	 * Description : player can choose which letter he/she want.
@@ -53,13 +55,13 @@ public class TicTacToe
 		{
 			if(userInput == 'x')
 			{
-				System.out.println("Player chooses x & o is for computer.");
 				computerInput = 'o';
+				System.out.println("Player chooses x & o is for computer.\n");
 			}
 			else
 			{
-				System.out.println("Player chooses o & x is for computer.");
 				computerInput = 'x';
+				System.out.println("Player chooses o & x is for computer.\n");
 			}
 		}
 		else
@@ -69,9 +71,31 @@ public class TicTacToe
 		}
 	}
 	
+	/**
+	 * UC-3
+	 * Name: showTicTacToeBoard
+	 * 
+	 * Description : Display current board.
+	 * 
+	 * Algorithm : With print statement displaying current state of board.
+	 * 
+	 * Modification : First commit 25-June-2021
+	 */
+	public static void showTicTacToeBoard()
+	{
+		System.out.println("|---|---|---|");
+		System.out.println("| " + tictactoeBoard[1] + " | " + tictactoeBoard[2] + " | " + tictactoeBoard[3] + " |");
+		System.out.println("|-----------|");
+		System.out.println("| " + tictactoeBoard[4] + " | " + tictactoeBoard[5] + " | " + tictactoeBoard[6] + " |");
+		System.out.println("|-----------|");
+		System.out.println("| " + tictactoeBoard[7] + " | " + tictactoeBoard[8] + " | " + tictactoeBoard[9] + " |");
+		System.out.println("|---|---|---|");
+	}
+	
 	public static void main(String[] args)
 	{
 		createTicTacToeBoard();
 		playerChoiceOfLetter();
+		showTicTacToeBoard();
 	}
 }
