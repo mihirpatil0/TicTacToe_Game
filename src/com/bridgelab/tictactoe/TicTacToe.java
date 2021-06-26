@@ -10,7 +10,10 @@ import java.util.Scanner;
  * In this class we are creating TicTacToe game.
  **********************************************/
 public class TicTacToe
-{
+{	
+	public static char computerChosenLetter, userChosenLetter;
+	
+	public static Scanner scannerObject = new Scanner(System.in);
 	public static char[] tictactoeBoard = new char[10];
 	
 	/**
@@ -45,23 +48,23 @@ public class TicTacToe
 	 */
 	public static void playerChoiceOfLetter()
 	{
-		char computerInput;
-		Scanner scannerObject = new Scanner(System.in);
-		System.out.print("Enter your choice to select the character x or o : ");
-		char userInput = scannerObject.next().charAt(0);
-		scannerObject.close();
 		
-		if( userInput == 'x' || userInput == 'o' )
+		System.out.print("Enter your choice to select the character x or o : ");
+		userChosenLetter = scannerObject.next().charAt(0);
+		
+		if( userChosenLetter == 'x' || userChosenLetter == 'o' )
 		{
-			if(userInput == 'x')
+			if(userChosenLetter == 'x')
 			{
-				computerInput = 'o';
+				computerChosenLetter = 'o';
 				System.out.println("Player chooses x & o is for computer.\n");
+				showTicTacToeBoard();
 			}
 			else
 			{
-				computerInput = 'x';
+				computerChosenLetter = 'x';
 				System.out.println("Player chooses o & x is for computer.\n");
+				showTicTacToeBoard();
 			}
 		}
 		else
@@ -92,10 +95,49 @@ public class TicTacToe
 		System.out.println("|---|---|---|");
 	}
 	
+	/**
+	 * UC-4
+	 * Name : playerMove
+	 * 
+	 * Description : Setting user chosen letter to selected index number.
+	 * 
+	 * Algorithm : player enters index number to put chosen letter ,if that index is not empty then asking player,
+	 * to enter index number again. method checks if selected index is between number 1 to 9 or not if not asking,
+	 * player to choose index number again.
+	 * 
+	 * @param userLetter // user chosen index number.
+	 * 
+	 * Modified : First commit 25-June-2021
+	 */
+	public static void playerMove()
+	{
+		System.out.print("\n" + "Choose block number from 1 to 9 to to set chosen symbol : ");
+		int userSelectedIndex = scannerObject.nextInt();
+	
+		if(userSelectedIndex >=1 && userSelectedIndex <= 9)
+		{
+			if(tictactoeBoard[userSelectedIndex] == '-')
+			{
+				tictactoeBoard[userSelectedIndex] = userChosenLetter;
+				showTicTacToeBoard();
+			}
+			else
+			{
+				System.out.println("Block already occupied, Enter another index number.");
+				playerMove();
+			}
+		}
+		else
+		{
+			System.out.println("Incorrect block number, Enter again.");
+			playerMove();
+		}
+	}
+	
 	public static void main(String[] args)
 	{
 		createTicTacToeBoard();
 		playerChoiceOfLetter();
-		showTicTacToeBoard();
+		playerMove();
 	}
 }
