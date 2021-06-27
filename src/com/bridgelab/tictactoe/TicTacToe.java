@@ -1,5 +1,6 @@
 package com.bridgelab.tictactoe;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**********************************************
@@ -9,6 +10,7 @@ import java.util.Scanner;
  * 
  * In this class we are creating TicTacToe game.
  **********************************************/
+
 public class TicTacToe
 {	
 	public static char computerChosenLetter, userChosenLetter;
@@ -85,7 +87,8 @@ public class TicTacToe
 	 * Modification : First commit 25-June-2021
 	 */
 	public static void showTicTacToeBoard()
-	{
+	{	
+		System.out.println("");
 		System.out.println("|---|---|---|");
 		System.out.println("| " + tictactoeBoard[1] + " | " + tictactoeBoard[2] + " | " + tictactoeBoard[3] + " |");
 		System.out.println("|-----------|");
@@ -93,6 +96,7 @@ public class TicTacToe
 		System.out.println("|-----------|");
 		System.out.println("| " + tictactoeBoard[7] + " | " + tictactoeBoard[8] + " | " + tictactoeBoard[9] + " |");
 		System.out.println("|---|---|---|");
+		System.out.println("");
 	}
 	
 	/**
@@ -134,10 +138,44 @@ public class TicTacToe
 		}
 	}
 	
+	/**
+	 * UC-5
+	 * 
+	 * Name - Todo toss to decide who goes first.
+	 * 
+	 * Description : with the help of toss will decide who will go first.
+	 * 
+	 * Algorithm : player have to chose either head or tail as his/her call.
+	 * making use of random.nextInt() function to draw toss.
+	 * checking if what player has chosen and what is drawn from random.nextInt() is same.
+	 * then player wins, player makes first move or computer will first move.
+	 * 
+	 * Modification : First commit 26-June-2021
+	 */
+	public static void tossWhoPlayFirst()
+	{  
+		Random randomToss = new Random();
+		int whoGoFirst = randomToss.nextInt(2);
+		System.out.println("\n"+whoGoFirst+"\n");
+		
+		System.out.print("Toss is to decide who makes first move : Enter number 1 for head or 0 for tail as a choice : ");
+		int tossChoice = scannerObject.nextInt();
+		
+		if(tossChoice == whoGoFirst && tossChoice == whoGoFirst)
+		{
+			System.out.println("Player wins the toss. Make first move.");
+			playerMove();
+		}
+		else
+		{
+			System.out.println("Computer wins the toss.  Making first move.");
+		}
+	}
+	
 	public static void main(String[] args)
 	{
 		createTicTacToeBoard();
 		playerChoiceOfLetter();
-		playerMove();
+		tossWhoPlayFirst();
 	}
 }
